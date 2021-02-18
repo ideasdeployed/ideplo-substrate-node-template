@@ -1,5 +1,5 @@
 [package]
-authors = ['Ideplo - Substrate DevHub <https://github.com/substrate-developer-hub>']
+authors = ['IDEPLPO - Substrate DevHub <https://github.com/substrate-developer-hub>']
 build = 'build.rs'
 description = 'A fresh FRAME-based Substrate node, ready for hacking.'
 edition = '2018'
