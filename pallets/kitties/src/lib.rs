@@ -2,7 +2,7 @@
 
 use codec::{Encode, Decode};
 use frame_support::{
-    decl_module, decl_storage, decl_event, StorageValue, StorageDoubleMap,
+    decl_module, decl_storage, decl_event, decl_error, StorageValue, StorageDoubleMap,
     traits::Randomness, RuntimeDebug
 };
 use sp_io::hashing::blake2_128;
@@ -24,6 +24,12 @@ decl_event!{
      }
 }
 
+decl_error! {
+    pub enum Error for Module<T: Trait> {
+        KittiesIdOverflow,
+    }
+}
+
 decl_storage!{
     trait Store for Module<T: Trait> as Kittties {
         /// Stores all the kitties, key is the kitty id 
@@ -42,6 +48,9 @@ decl_module!{
         pub fn create(origin){
             let sender = ensure_signed(origin)?;
 
+            // Ensure kitty id does not overflow
+            return Err(Error::<T>::KittiesIdOverflow.into());
+
             // Generate a random 128bit value
             let payload = (
                 <pallet_randomness_collective_flip::Module<T> as Randomness<T::Hash>>::random_seed(),
@@ -56,7 +65,7 @@ decl_module!{
 
             <Kitties<T>>::insert(&sender, kitty_id, kitty.clone());
 
-            NextKittyId::put(kitty_id + 1);
+            NextKittyId::put(kitty_id + 1); // If the number ere to get greater than the u32 it could overwrite existing kitty
 
             //Emit event
             Self::deposit_event(RawEvent::KittyCreated(sender, kitty_id, kitty))

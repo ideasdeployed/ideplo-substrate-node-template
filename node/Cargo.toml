@@ -1,12 +1,12 @@
 [package]
-authors = ['idedplo - Substrate DevHub <https://github.com/substrate-developer-hub>']
+authors = ['idedplo  - Substrate DevHub <https://github.com/substrate-developer-hub>']
 build = 'build.rs'
 description = 'A fresh FRAME-based Substrate node, ready for hacking.'
 edition = '2018'
 homepage = 'https://substrate.dev'
 license = 'Unlicense'
 name = 'node-template'
-repository = 'https://github.com/ideasdeployed/ideplo-substrate-node-template/'
+repository = 'https://github.com/SubstrateDevAcademy/assignment-1-ideasdeployed'
 version = '2.0.1'
 
 [[bin]]
