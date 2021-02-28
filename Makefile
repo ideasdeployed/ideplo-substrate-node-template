@@ -1,3 +1,7 @@
+
+run-tmp:
+	SKIP_WASM_BUILD= cargo run -- --dev --tmp -lruntime=debug
+	
 .PHONY: init
 init:
 	./scripts/init.sh

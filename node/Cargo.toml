@@ -10,7 +10,7 @@ repository = 'https://github.com/ideasdeployed/ideplo-substrate-node-template/'
 version = '2.0.1'
 
 [[bin]]
-name = 'ideplo-node-template'
+name = 'node-template'
 
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']
